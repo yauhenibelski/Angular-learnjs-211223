@@ -1,9 +1,18 @@
 :host {
+    /* [_nghost-ng-c4058623384] { */
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
+
+/* :host ::ng-deep span {
+    color: red;
+} */
+
+/* :host span {
+    color: red;
+} */
 
 .example-container {
     width: 100%;
@@ -21,3 +30,7 @@
 .example-sidenav {
     padding: 20px;
 }
+
+/* span {
+    color: blue;
+} */

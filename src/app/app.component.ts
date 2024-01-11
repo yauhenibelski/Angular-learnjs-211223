@@ -9,12 +9,12 @@ import {applicationConfigMock} from './shared/application-config/application-con
 export class AppComponent {
     readonly applicationConfig = applicationConfigMock;
 
-    isSidenavOpenedApp = false;
+    // isSidenavOpenedApp = false;
 
-    onMenuClick() {
-        this.isSidenavOpenedApp = !this.isSidenavOpenedApp;
+    // onMenuClick() {
+    //     this.isSidenavOpenedApp = !this.isSidenavOpenedApp;
 
-        // eslint-disable-next-line no-console
-        console.log('Menu clicked | App');
-    }
+    //     // eslint-disable-next-line no-console
+    //     console.log('Menu clicked | App');
+    // }
 }

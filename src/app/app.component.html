@@ -1,5 +1,10 @@
 <!-- <app-header [config]="applicationConfig"></app-header> -->
-<app-header [applicationConfig]="applicationConfig" (menuClick)="onMenuClick()"></app-header>
+<!-- <app-header [applicationConfig]="applicationConfig" (menuClick)="onMenuClick()"></app-header> -->
+<!-- <app-header [applicationConfig]="applicationConfig" (menuClick)="sidenav.drawerComponent?.toggle()"></app-header> -->
+<app-header
+    [applicationConfig]="applicationConfig"
+    (menuClick)="sidenav.toggleSidenavOpened()"
+></app-header>
 <!--
     (menuClick)="onMenuClick($event)"
                 |
@@ -8,9 +13,11 @@
         onMenuClick($event)
     });
  -->
-<app-sidenav
+<!-- <app-sidenav
     [isSidenavOpened]="isSidenavOpenedApp"
     (isSidenavOpenedChange)="isSidenavOpenedApp = $event"
-></app-sidenav>
+></app-sidenav> -->
+<!-- <app-sidenav [(isSidenavOpened)]="isSidenavOpenedApp"></app-sidenav> -->
+<app-sidenav #sidenav></app-sidenav>
 
 <!-- <app-products-list></app-products-list> -->
