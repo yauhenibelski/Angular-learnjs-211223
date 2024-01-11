@@ -1,2 +1,16 @@
-<app-header></app-header>
+<!-- <app-header [config]="applicationConfig"></app-header> -->
+<app-header [applicationConfig]="applicationConfig" (menuClick)="onMenuClick()"></app-header>
+<!--
+    (menuClick)="onMenuClick($event)"
+                |
+                V
+    HeaderComponent.menuClick.subscribe($event => {
+        onMenuClick($event)
+    });
+ -->
+<app-sidenav
+    [isSidenavOpened]="isSidenavOpenedApp"
+    (isSidenavOpenedChange)="isSidenavOpenedApp = $event"
+></app-sidenav>
+
 <!-- <app-products-list></app-products-list> -->
