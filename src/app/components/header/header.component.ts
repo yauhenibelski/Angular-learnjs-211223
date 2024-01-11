@@ -12,7 +12,5 @@ export class HeaderComponent {
     menuClick(event: MouseEvent) {
         // eslint-disable-next-line no-console
         console.log('Clicked', event);
-
-        // event.stopPropagation();
     }
 }

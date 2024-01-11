@@ -5,21 +5,8 @@
         class="example-icon"
         (click)="menuClick($event); $event.stopPropagation()"
     >
-        <!--
-            (click)="menuClick($event)"
-
-                    |
-                    V
-
-            addEventListener('click', $event => {
-                menuClick($event); $event.stopPropagation()
-            })
-         -->
         <mat-icon>menu</mat-icon>
     </button>
-    <!-- <img class="shop-icon" src="{{imgSrc}}" /> -->
-    <!-- <img class="shop-icon" style="width: {{100}}px" [src]="imgSrc" /> -->
-    <!-- <img class="shop-icon" [style.width.%]="100" [src]="imgSrc" /> -->
     <img alt="logo" class="shop-icon" [src]="imgSrc" />
     <span>{{ title }}</span>
     <span class="example-spacer"></span>
