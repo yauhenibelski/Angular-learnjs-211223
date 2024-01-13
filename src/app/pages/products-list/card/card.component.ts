@@ -11,5 +11,8 @@ export class CardComponent {
     cover = this.product.images[0];
 
     // eslint-disable-next-line no-console
-    buyNow = () => console.log('Buy now');
+    buyNow() {
+        // eslint-disable-next-line no-console
+        console.log('Buy now');
+    }
 }
