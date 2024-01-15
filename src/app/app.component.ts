@@ -8,13 +8,4 @@ import {applicationConfigMock} from './shared/application-config/application-con
 })
 export class AppComponent {
     readonly applicationConfig = applicationConfigMock;
-
-    // isSidenavOpenedApp = false;
-
-    // onMenuClick() {
-    //     this.isSidenavOpenedApp = !this.isSidenavOpenedApp;
-
-    //     // eslint-disable-next-line no-console
-    //     console.log('Menu clicked | App');
-    // }
 }
