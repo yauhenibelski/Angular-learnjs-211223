@@ -9,13 +9,13 @@ import {productsMock} from 'src/app/shared/products/products.mock';
 export class ProductsListComponent {
     readonly products = productsMock;
 
-    addToCard(productID: string) {
+    addToCart(productID: string) {
         // eslint-disable-next-line no-console
-        console.log(`The product was added in card \n Product id: ${productID}`);
+        console.log(`The product was added in cart \n Product id: ${productID}`);
     }
 
     onCardClick() {
         // eslint-disable-next-line no-console
-        console.log('Card click');
+        console.log('Cart click');
     }
 }
