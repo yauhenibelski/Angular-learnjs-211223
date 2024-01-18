@@ -17,7 +17,9 @@ export class CardComponent {
     onProductBuy(event: Event) {
         event.stopPropagation();
 
-        this.product && this.addToCart.emit(this.product._id);
+        if (this.product) {
+            this.addToCart.emit(this.product._id);
+        }
 
         // eslint-disable-next-line no-console
         console.log('Buy product');
