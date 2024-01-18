@@ -8,7 +8,20 @@ import {productsMock} from '../../shared/products/products.mock';
     styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent {
-    readonly products = productsMock;
+    productsStore: IProduct[] | null = null;
+
+    get products(): IProduct[] | null {
+        // eslint-disable-next-line no-console
+        console.log('Products calculated');
+
+        return this.productsStore;
+    }
+
+    constructor() {
+        setTimeout(() => {
+            this.productsStore = productsMock;
+        }, 3000);
+    }
 
     onProductBuy(id: IProduct['_id']) {
         // eslint-disable-next-line no-console

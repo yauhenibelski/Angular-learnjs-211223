@@ -7,9 +7,17 @@ import {IProduct} from '../../../shared/products/product.interface';
     styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-    @Input() product: IProduct | null = null;
+    @Input({required: true}) product: IProduct | undefined;
 
     @Output() readonly buy = new EventEmitter<IProduct['_id']>();
+
+    // constructor() {
+    //     console.log(this.product);
+
+    //     setTimeout(() => {
+    //         console.log(this.product);
+    //     });
+    // }
 
     onProductBuy(event: Event) {
         event.stopPropagation();
