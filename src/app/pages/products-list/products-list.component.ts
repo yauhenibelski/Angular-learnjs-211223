@@ -12,7 +12,7 @@ export class ProductsListComponent {
 
     get products(): IProduct[] | null {
         // eslint-disable-next-line no-console
-        console.log('Products calculated');
+        // console.log('Products calculated');
 
         return this.productsStore;
     }

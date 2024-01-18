@@ -4,6 +4,9 @@
     [ngIf]="products"
     [ngIfElse]="loaderTemplate"
 >
+    <!-- Раскомментировать div при выполнении ДЗ -->
+    <!-- <div appScrollWithLoading class="scroll-container" (loadData)="onLoad($event)"> -->
+
     <!-- {{toString}} -->
     <!-- <ng-template [appDumpNgIf]="products" let-productsFromNgIf="appDumpNgIf" let-name="name"> -->
     <!-- {{name}} -->
@@ -12,6 +15,8 @@
     <app-card class="card" [product]="productsFromNgIf[2]" (buy)="onProductBuy($event)"></app-card>
     <app-card class="card" [product]="productsFromNgIf[3]" (buy)="onProductBuy($event)"></app-card>
     <app-card class="card" [product]="productsFromNgIf[4]" (buy)="onProductBuy($event)"></app-card>
+
+    <!-- </div> -->
 </ng-template>
 
 <ng-template #loaderTemplate>
