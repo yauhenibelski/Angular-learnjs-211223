@@ -1,4 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    HostListener,
+    Input,
+    Output,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
+import {PopupHostComponent} from 'src/app/components/popup-host/popup-host.component';
 import {IProduct} from '../../../shared/products/product.interface';
 
 @Component({
@@ -8,8 +17,15 @@ import {IProduct} from '../../../shared/products/product.interface';
 })
 export class CardComponent {
     @Input() product: IProduct | null = null;
-
     @Output() readonly buy = new EventEmitter<IProduct['_id']>();
+
+    @ViewChild('mockModal', {read: TemplateRef<undefined>}) modal: TemplateRef<unknown> | null =
+        null;
+
+    @Input({required: true}) popup: PopupHostComponent | null = null;
+    @HostListener('click', ['$event']) click() {
+        this.popup?.addTemplate(this.modal);
+    }
 
     onProductBuy(event: Event) {
         event.stopPropagation();

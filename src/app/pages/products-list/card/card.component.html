@@ -27,3 +27,7 @@
         <button mat-button [disabled]="!this.product" (click)="onProductBuy($event)">Buy</button>
     </mat-card-actions>
 </mat-card>
+
+<ng-template #mockModal>
+    <h2 (click)="$event.stopPropagation()">{{ product?.name }}</h2>
+</ng-template>
