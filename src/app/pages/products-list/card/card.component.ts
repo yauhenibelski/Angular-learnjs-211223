@@ -19,8 +19,7 @@ export class CardComponent {
     @Input() product: IProduct | null = null;
     @Output() readonly buy = new EventEmitter<IProduct['_id']>();
 
-    @ViewChild('mockModal', {read: TemplateRef<undefined>}) modal: TemplateRef<unknown> | null =
-        null;
+    @ViewChild('mockModal', {read: TemplateRef}) modal: TemplateRef<unknown> | null = null;
 
     @Input({required: true}) popup: PopupHostComponent | null = null;
     @HostListener('click', ['$event']) click() {
