@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import ScrollDirection from 'src/app/shared/directives/infiniteScroll/infinite-scroll/scroll-direction.enum';
 import {IProduct} from '../../shared/products/product.interface';
 import {productsMock} from '../../shared/products/products.mock';
 
@@ -21,6 +22,12 @@ export class ProductsListComponent {
         setTimeout(() => {
             this.productsStore = productsMock;
         }, 3000);
+    }
+
+    onLoad(direction: ScrollDirection) {
+        if (direction) {
+            this.products?.push(...this.products); // например
+        }
     }
 
     onProductBuy(id: IProduct['_id']) {
