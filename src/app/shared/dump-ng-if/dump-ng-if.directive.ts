@@ -9,7 +9,6 @@ export class DumpNgIfDirective<T> {
 
         if (value && !isContainerHasView) {
             this.viewContainerRef.createEmbeddedView(this.templateRef, {
-                // name: 'Egor',
                 appDumpNgIf: value,
                 $implicit: value,
             });

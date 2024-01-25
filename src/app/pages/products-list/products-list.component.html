@@ -1,29 +1,4 @@
-<!-- <ng-template
-    let-productsFromNgIf="ngIf"
-    let-toString="toString"
-    [ngIf]="products"
-    [ngIfElse]="loaderTemplate"
-> -->
-<!-- Раскомментировать div при выполнении ДЗ -->
-<!-- <div appScrollWithLoading class="scroll-container" (loadData)="onLoad($event)"> -->
-
-<!-- <div *ngIf="products; else: loaderTemplate; let productsFromNgIf = ngIf" class="scroll-container"> -->
-<!-- <div *ngIf="products; else: loaderTemplate; ngIf as productsFromNgIf" class="scroll-container"> -->
-<div *ngIf="products as productsFromNgIf; else loaderTemplate" class="scroll-container">
-    <!--
-    <ng-template [ngIf]="products" [ngIfElse]="loaderTemplate" let-productsFromNgIf="ngIf">
- -->
-
-    <!-- {{toString}} -->
-    <!-- <ng-template [appDumpNgIf]="products" let-productsFromNgIf="appDumpNgIf" let-name="name"> -->
-    <!-- {{name}} -->
-    <!-- <app-card class="card" [product]="productsFromNgIf[0]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[1]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[2]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[3]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[4]" (buy)="onProductBuy($event)"></app-card> -->
-
-    <!-- Раскомментрировать для ДЗ -->
+<div *ngIf="products; else loaderTemplate" class="scroll-container">
     <ng-container
         *appPagination="
             let productsGroup of products;
@@ -48,7 +23,6 @@
                 "
                 class="card"
                 [product]="product"
-                (buy)="onProductBuy($event)"
             ></app-card>
         </div>
         <div class="pagination">
@@ -72,7 +46,6 @@
         </div>
     </ng-container>
 </div>
-<!-- </ng-template> -->
 
 <ng-template #loaderTemplate>
     <mat-spinner></mat-spinner>

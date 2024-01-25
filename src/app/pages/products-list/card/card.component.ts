@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IProduct} from '../../../shared/products/product.interface';
 
 @Component({
@@ -6,24 +6,10 @@ import {IProduct} from '../../../shared/products/product.interface';
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.css'],
 })
-export class CardComponent implements OnChanges {
+export class CardComponent {
     @Input({required: true}) product: IProduct | undefined;
 
     @Output() readonly buy = new EventEmitter<IProduct['_id']>();
-
-    constructor() {
-        // eslint-disable-next-line no-console
-        console.log('Product card created');
-
-        //     setTimeout(() => {
-        //         console.log(this.product);
-        //     });
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        // eslint-disable-next-line no-console
-        console.log(changes);
-    }
 
     onProductBuy(event: Event) {
         event.stopPropagation();
