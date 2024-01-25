@@ -23,20 +23,54 @@
     <app-card class="card" [product]="productsFromNgIf[3]" (buy)="onProductBuy($event)"></app-card>
     <app-card class="card" [product]="productsFromNgIf[4]" (buy)="onProductBuy($event)"></app-card> -->
 
-    <app-card
-        *ngFor="
-            let product of productsFromNgIf;
-            trackBy: trackById;
-            let index = index;
-            let first = first;
-            let last = last;
-            let even = even;
-            let odd = odd
+    <!-- Раскомментрировать для ДЗ -->
+    <ng-container
+        *appPagination="
+            let productsGroup of products;
+            chankSize: 4;
+            let pageIndexes = pageIndexes;
+            let activeIndex = index;
+            let next = next;
+            let back = back;
+            let selectIndex = selectIndex
         "
-        class="card"
-        [product]="product"
-        (buy)="onProductBuy($event)"
-    ></app-card>
+    >
+        <div class="cards">
+            <app-card
+                *ngFor="
+                    let product of productsGroup;
+                    trackBy: trackById;
+                    let index = index;
+                    let first = first;
+                    let last = last;
+                    let even = even;
+                    let odd = odd
+                "
+                class="card"
+                [product]="product"
+                (buy)="onProductBuy($event)"
+            ></app-card>
+        </div>
+        <div class="pagination">
+            <button mat-icon-button (click)="back()">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+            <div class="pagination__page-number-container">
+                <button
+                    *ngFor="let index of pageIndexes"
+                    mat-icon-button
+                    class="pagination__page-number"
+                    [class.pagination__page-number_active]="activeIndex === index"
+                    (click)="selectIndex(index)"
+                >
+                    {{ index + 1 }}
+                </button>
+            </div>
+            <button mat-icon-button (click)="next()">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+        </div>
+    </ng-container>
 </div>
 <!-- </ng-template> -->
 
