@@ -29,7 +29,7 @@ export class CarouselDirective<T> implements OnChanges, OnInit, OnDestroy {
         return Boolean(this.appCarouselOf?.length);
     }
 
-    ngOnChanges({appCarouselOf}: SimpleChanges): void {
+    ngOnChanges({appCarouselOf}: SimpleChanges) {
         if (appCarouselOf) {
             this.updateView();
         }

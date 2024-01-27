@@ -2,7 +2,7 @@
     <ng-container
         *appPagination="
             let productsGroup of products;
-            chankSize: 4;
+            chankSize: 1;
             let pageIndexes = pageIndexes;
             let activeIndex = index;
             let next = next;
@@ -23,7 +23,9 @@
                 "
                 class="card"
                 [product]="product"
-            ></app-card>
+            >
+                Text
+            </app-card>
         </div>
         <div class="pagination">
             <button mat-icon-button (click)="back()">
