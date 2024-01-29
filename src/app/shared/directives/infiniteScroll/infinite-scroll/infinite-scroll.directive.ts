@@ -5,17 +5,35 @@ import ScrollDirection from './scroll-direction.enum';
     selector: '[appInfiniteScroll]',
 })
 export class InfiniteScrollDirective {
-    @Output() loadData = new EventEmitter<ScrollDirection>();
-    @HostListener('scroll', ['$event.target']) scroll(elem: HTMLElement) {
-        const {scrollHeight, scrollTop, offsetHeight} = elem;
-        const MIN_PADDING = elem.firstElementChild!.clientHeight; // card height
+    private currentDirection: ScrollDirection | null = ScrollDirection.up;
 
-        if (scrollTop + offsetHeight + MIN_PADDING >= scrollHeight) {
-            this.loadData.emit(ScrollDirection.down);
+    @Output() loadData = new EventEmitter<ScrollDirection>();
+    @HostListener('scroll', ['$event.target']) scroll({
+        scrollHeight,
+        scrollTop,
+        offsetHeight,
+    }: HTMLElement) {
+        const MIN_PADDING = 100;
+        const scrollDown = scrollHeight - scrollTop - offsetHeight;
+
+        if (scrollDown <= MIN_PADDING) {
+            if (this.currentDirection !== ScrollDirection.down) {
+                this.currentDirection = ScrollDirection.down;
+                this.loadData.emit(this.currentDirection);
+            }
+
+            return;
         }
 
         if (scrollTop <= MIN_PADDING) {
-            this.loadData.emit(ScrollDirection.up);
+            if (this.currentDirection !== ScrollDirection.up) {
+                this.currentDirection = ScrollDirection.up;
+                this.loadData.emit(this.currentDirection);
+            }
+
+            return;
         }
+
+        this.currentDirection = null;
     }
 }

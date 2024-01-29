@@ -21,13 +21,20 @@ export class ProductsListComponent {
     constructor() {
         setTimeout(() => {
             this.productsStore = productsMock;
-        }, 3000);
+        }, 500);
     }
 
     onLoad(direction: ScrollDirection) {
-        if (direction) {
-            this.products?.push(...this.products); // например
+        if (direction === ScrollDirection.down) {
+            // this.products?.push(...this.products); // например
         }
+
+        if (direction === ScrollDirection.up) {
+            // to do smt
+        }
+
+        // eslint-disable-next-line no-console
+        console.log(direction);
     }
 
     onProductBuy(id: IProduct['_id']) {

@@ -11,6 +11,8 @@
         "prettier:fix": "prettier --write",
         "prettier:fix:all": "prettier --write .",
         "lint": "ng lint",
+        "predeploy": "ng build --configuration production --base-href=https://yauhenibelski.github.io/Angular-learnjs-211223/",
+        "deploy": "npx angular-cli-ghpages --dir=dist/Angular-learnjs-211223",
         "prepare": "husky install"
     },
     "private": true,
@@ -47,6 +49,7 @@
         "@types/jasmine": "~4.3.0",
         "@typescript-eslint/eslint-plugin": "5.62.0",
         "@typescript-eslint/parser": "5.62.0",
+        "angular-cli-ghpages": "^2.0.0-beta.2",
         "eslint": "^8.51.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^8.8.0",
