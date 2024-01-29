@@ -6,7 +6,7 @@ import {
     Component,
     DoCheck,
 } from '@angular/core';
-import {IProduct} from '../../shared/products/product.interface';
+import {Product} from '../../shared/products/product.interface';
 import {productsMock} from '../../shared/products/products.mock';
 // import {productsMock} from '../../shared/products/products.mock';
 
@@ -17,7 +17,7 @@ import {productsMock} from '../../shared/products/products.mock';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements AfterViewInit, AfterViewChecked, DoCheck {
-    products: IProduct[] | null = null;
+    products: Product[] | null = null;
 
     constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
         // this.changeDetectorRef.detach();
@@ -56,7 +56,7 @@ export class ProductsListComponent implements AfterViewInit, AfterViewChecked, D
         console.log('ngAfterViewChecked - ProductsListComponent');
     }
 
-    trackById(_: number, item: IProduct): IProduct['_id'] {
+    trackById(_: number, item: Product): Product['_id'] {
         return item._id;
     }
 }

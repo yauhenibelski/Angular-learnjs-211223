@@ -17,7 +17,7 @@ import {
     SimpleChanges,
     inject,
 } from '@angular/core';
-import {IProduct} from '../../../shared/products/product.interface';
+import {Product} from '../../../shared/products/product.interface';
 
 @Component({
     selector: 'app-card',
@@ -38,9 +38,9 @@ export class CardComponent
 {
     // private readonly name1 = this.name1.pipe();
 
-    @Input({required: true}) product: IProduct | undefined;
+    @Input({required: true}) product: Product | undefined;
 
-    @Output() readonly buy = new EventEmitter<IProduct['_id']>();
+    @Output() readonly buy = new EventEmitter<Product['_id']>();
 
     // readonly name2 = of(1);
 

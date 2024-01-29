@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {BehaviorSubject, filter, map, Subject, takeUntil} from 'rxjs';
 import {chunk} from 'lodash';
-import {IPaginationContext} from './pagination-context.interface';
+import {PaginationContext} from './pagination-context.interface';
 
 @Directive({
     selector: '[appPagination]',
@@ -26,7 +26,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit, OnDestroy {
 
     constructor(
         private readonly viewContainer: ViewContainerRef,
-        private readonly template: TemplateRef<IPaginationContext<T>>,
+        private readonly template: TemplateRef<PaginationContext<T>>,
     ) {}
 
     get shouldShowItems(): boolean {
@@ -72,7 +72,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit, OnDestroy {
             });
     }
 
-    private getCurrentContext(currentIndex: number): IPaginationContext<T> {
+    private getCurrentContext(currentIndex: number): PaginationContext<T> {
         return {
             $implicit: this.groupedItems[currentIndex],
             index: currentIndex,
@@ -111,7 +111,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit, OnDestroy {
     static ngTemplateContextGuard<T>(
         _directive: PaginationDirective<T>,
         _context: unknown,
-    ): _context is IPaginationContext<T> {
+    ): _context is PaginationContext<T> {
         return true;
     }
 

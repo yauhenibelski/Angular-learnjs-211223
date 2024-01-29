@@ -1,4 +1,4 @@
-export interface IPaginationContext<T> {
+export interface PaginationContext<T> {
     $implicit: T[];
     index: number;
     appPaginationOf: T[];

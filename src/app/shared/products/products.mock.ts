@@ -1,6 +1,6 @@
-import {IProduct} from './product.interface';
+import {Product} from './product.interface';
 
-export const productsMock: IProduct[] = [
+export const productsMock: Product[] = [
     {
         // eslint-disable-next-line @typescript-eslint/naming-convention
         _id: '96-planset-dexp-ursus-s290-32-gb-3g-cernyj',
