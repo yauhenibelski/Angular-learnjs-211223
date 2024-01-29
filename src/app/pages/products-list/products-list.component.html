@@ -1,32 +1,7 @@
-<app-card
-    class="card"
-    [product]="products[0]"
-    [popup]="popup"
-    (buy)="onProductBuy($event)"
-></app-card>
-<app-card
-    class="card"
-    [product]="products[1]"
-    [popup]="popup"
-    (buy)="onProductBuy($event)"
-></app-card>
-<app-card
-    class="card"
-    [product]="products[2]"
-    [popup]="popup"
-    (buy)="onProductBuy($event)"
-></app-card>
-<app-card
-    class="card"
-    [product]="products[3]"
-    [popup]="popup"
-    (buy)="onProductBuy($event)"
-></app-card>
-<app-card
-    class="card"
-    [product]="products[4]"
-    [popup]="popup"
-    (buy)="onProductBuy($event)"
-></app-card>
+<app-card class="card" [product]="products[0]" (buy)="onProductBuy($event)"></app-card>
+<app-card class="card" [product]="products[1]" (buy)="onProductBuy($event)"></app-card>
+<app-card class="card" [product]="products[2]" (buy)="onProductBuy($event)"></app-card>
+<app-card class="card" [product]="products[3]" (buy)="onProductBuy($event)"></app-card>
+<app-card class="card" [product]="products[4]" (buy)="onProductBuy($event)"></app-card>
 
-<app-popup-host #popup></app-popup-host>
+<app-popup-host></app-popup-host>

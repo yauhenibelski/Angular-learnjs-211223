@@ -15,17 +15,23 @@ import {
 export class PopupHostComponent {
     @HostBinding('style.display') display: 'flex' | 'none' = 'none';
     @ViewChild('content', {read: ViewContainerRef})
-    vc: ViewContainerRef | null = null;
+    viewContainer: ViewContainerRef | null = null;
+
+    static addTemplate: (template: TemplateRef<unknown> | null) => void;
 
     @HostListener('click') click() {
-        this.vc?.clear();
+        this.viewContainer?.clear();
         this.display = 'none';
+    }
+
+    constructor() {
+        PopupHostComponent.addTemplate = this.addTemplate.bind(this);
     }
 
     addTemplate(template: TemplateRef<unknown> | null) {
         if (template) {
-            this.vc?.clear();
-            this.vc?.createEmbeddedView(template);
+            this.viewContainer?.clear();
+            this.viewContainer?.createEmbeddedView(template);
             this.display = 'flex';
         }
     }
