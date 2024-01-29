@@ -1,23 +1,6 @@
-import {
-    AfterContentChecked,
-    AfterContentInit,
-    AfterViewChecked,
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    DoCheck,
-    EventEmitter,
-    Input,
-    OnChanges,
-    OnDestroy,
-    OnInit,
-    Output,
-    SimpleChange,
-    SimpleChanges,
-    inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../../shared/products/product.interface';
+import {currency} from '../../../shared/currency/currency';
 
 @Component({
     selector: 'app-card',
@@ -25,84 +8,10 @@ import {Product} from '../../../shared/products/product.interface';
     styleUrls: ['./card.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent
-    implements
-        OnChanges,
-        OnInit,
-        DoCheck,
-        AfterContentInit,
-        AfterContentChecked,
-        AfterViewInit,
-        AfterViewChecked,
-        OnDestroy
-{
-    // private readonly name1 = this.name1.pipe();
-
+export class CardComponent {
     @Input({required: true}) product: Product | undefined;
 
     @Output() readonly buy = new EventEmitter<Product['_id']>();
-
-    // readonly name2 = of(1);
-
-    readonly changeDetectorRef = inject(ChangeDetectorRef);
-
-    constructor() {
-        // eslint-disable-next-line no-console
-        console.log('constructor');
-        // this.changeDetectorRef.detach();
-
-        // setTimeout(() => {
-        //     this.changeDetectorRef.detectChanges();
-        // }, 100);
-        // this.name = 'Egor';
-    }
-
-    ngOnChanges({product}: SimpleChanges) {
-        if (product) {
-            // const newValue = product.currentValue;
-            // const newValue = this.product;
-
-            this.updateProduct(product);
-        }
-    }
-
-    ngOnInit() {
-        // eslint-disable-next-line no-console
-        console.log('Create');
-    }
-
-    ngDoCheck() {
-        // eslint-disable-next-line no-console
-        console.log('ngDoCheck');
-    }
-
-    ngAfterContentInit() {
-        // eslint-disable-next-line no-console
-        console.log('ngAfterContentInit');
-    }
-
-    ngAfterContentChecked() {
-        // eslint-disable-next-line no-console
-        console.log('ngAfterContentChecked');
-    }
-
-    ngAfterViewInit() {
-        // eslint-disable-next-line no-console
-        console.log('ngAfterViewInit');
-    }
-
-    ngAfterViewChecked() {
-        // eslint-disable-next-line no-console
-        console.log('ngAfterViewChecked');
-        // requestAnimationFrame(() => {
-
-        // })
-    }
-
-    ngOnDestroy() {
-        // eslint-disable-next-line no-console
-        console.log('ngOnDestroy');
-    }
 
     onProductBuy(event: Event) {
         event.stopPropagation();
@@ -115,8 +24,9 @@ export class CardComponent
         return !!(this.product && this.product.rating >= starIndex);
     }
 
-    private updateProduct(simpleChange: SimpleChange) {
-        // eslint-disable-next-line no-console
-        console.log(simpleChange);
-    }
+    // currency(price: number | undefined): string {
+    //     return `${price} $`;
+    // }
+
+    readonly currency = currency;
 }

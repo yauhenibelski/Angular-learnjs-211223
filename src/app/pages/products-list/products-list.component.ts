@@ -1,14 +1,6 @@
-import {
-    AfterViewChecked,
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    DoCheck,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Product} from '../../shared/products/product.interface';
-import {productsMock} from '../../shared/products/products.mock';
-// import {productsMock} from '../../shared/products/products.mock';
+import {ProductsStoreService} from '../../shared/products/products-store.service';
 
 @Component({
     selector: 'app-products-list',
@@ -16,58 +8,39 @@ import {productsMock} from '../../shared/products/products.mock';
     styleUrls: ['./products-list.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsListComponent implements AfterViewInit, AfterViewChecked, DoCheck {
-    products: Product[] | null = null;
+export class ProductsListComponent implements OnInit {
+    // readonly products$ = of(productsMock);
+    // readonly productsStoreService = new ProductsStoreService();
+    readonly products$ = this.productsStoreService.products$;
 
-    constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
-        // this.changeDetectorRef.detach();
-
-        // setTimeout(() => {
-        //     this.changeDetectorRef.detectChanges();
-        // });
-
-        setTimeout(() => {
-            this.products = productsMock;
-
-            this.changeDetectorRef.markForCheck();
-
-            // this.changeDetectorRef.reattach();
-            // this.changeDetectorRef.detectChanges();
-        }, 3000);
-
-        // setTimeout(() => {
-        //     this.products = productsMock.map(item => ({...item, feedbacksCount: 5}));
-        //     // this.changeDetectorRef.detectChanges();
-        // }, 5000);
+    constructor(
+        // @Inject(ProductsStoreService) private readonly productsStoreService: ProductsStoreService,
+        // ~
+        private readonly productsStoreService: ProductsStoreService, // @Inject('ProductsStoreServiceString') // private readonly productsStoreServiceString: ProductsStoreService, // @Inject('baseUrl') // private readonly baseUrl: string, // @Inject('productsStream$') // readonly products$: Observable<Product[] | null>,
+    ) {
+        // console.log(productsStoreServiceString === productsStoreService);
+        // console.log(baseUrl);
     }
 
-    ngDoCheck() {
-        // eslint-disable-next-line no-console
-        console.log('ngDoCheck - ProductsListComponent');
-    }
+    // constructor(@Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef) {
+    // constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
+    // setTimeout(() => {
+    //     this.products = productsMock;
 
-    ngAfterViewInit() {
-        // eslint-disable-next-line no-console
-        console.log('ngAfterViewInit - ProductsListComponent');
-    }
+    //     this.changeDetectorRef.markForCheck();
+    // }, 3000);
+    // setTimeout(() => {
+    //     this.products = productsMock.map(item => ({...item, price: 1000}));
 
-    ngAfterViewChecked() {
-        // eslint-disable-next-line no-console
-        console.log('ngAfterViewChecked - ProductsListComponent');
+    //     this.changeDetectorRef.markForCheck();
+    // }, 5000);
+    // }
+
+    ngOnInit(): void {
+        this.productsStoreService.loadProducts();
     }
 
     trackById(_: number, item: Product): Product['_id'] {
         return item._id;
     }
 }
-
-// const oldSetTimeout = setTimeout;
-
-// window.setTimeout = function(cb, timer) {
-//     console.log('Start');
-
-//     oldSetTimeout(() => {
-//         cb();
-//         console.log('End');
-//     }, timer);
-// }

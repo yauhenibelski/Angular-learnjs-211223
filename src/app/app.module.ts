@@ -10,6 +10,8 @@ import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsertShadowModule} from './shared/insert-shadow/insert-shadow.module';
+import {ProductsStoreService} from './shared/products/products-store.service';
+import {ProductsApiService} from './shared/products/products-api.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -20,9 +22,38 @@ import {InsertShadowModule} from './shared/insert-shadow/insert-shadow.module';
         HeaderModule,
         ProductsListModule,
         SidenavModule,
-        MatListModule,
+        MatListModule, // providers: [{provide: {name: 'user'}, useClass: ...}]
         PopupHostModule,
         InsertShadowModule,
+    ],
+    providers: [
+        // ...MatListModule.providers,
+        ProductsApiService,
+        ProductsStoreService,
+        // {
+        //     provide: BASE_URL,
+        //     useValue: '',
+        // },
+        // {
+        //     provide: ProductsStoreService, // token
+        //     useClass: ProductsStoreService, // class
+        // },
+        // {
+        //     provide: 'ProductsStoreServiceString', // token
+        //     useExisting: ProductsStoreService, // token
+        //     // useClass: ProductsStoreService, // class
+        // },
+        // {
+        //     provide: 'baseUrl',
+        //     useValue: 'http://....',
+        // },
+        // {
+        //     provide: 'productsStream$',
+        //     useFactory: () => inject(ProductsStoreService).products$,
+        //     // useFactory: (productsStoreService: ProductsStoreService) => productsStoreService,
+        //     // deps: [ProductsStoreService],
+        //     // useFactory: () => new ProductsStoreService(),
+        // },
     ],
     bootstrap: [AppComponent],
 })
