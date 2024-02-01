@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderModule} from './components/header/header.module';
@@ -10,8 +11,8 @@ import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsertShadowModule} from './shared/insert-shadow/insert-shadow.module';
-import {ProductsStoreService} from './shared/products/products-store.service';
 import {ProductsApiService} from './shared/products/products-api.service';
+import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,11 +26,26 @@ import {ProductsApiService} from './shared/products/products-api.service';
         MatListModule, // providers: [{provide: {name: 'user'}, useClass: ...}]
         PopupHostModule,
         InsertShadowModule,
+        HttpClientModule,
     ],
     providers: [
+        // ...provideIn: 'root',
         // ...MatListModule.providers,
         ProductsApiService,
-        ProductsStoreService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: BaseUrlInterceptor,
+            multi: true,
+        },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: BaseUrlInterceptor,
+        //     multi: true,
+        // },
+        // {
+        //     provide: BASE_URL,
+        //     useFactory: () => 'https://course-angular.javascript.ru/api',
+        // },
         // {
         //     provide: BASE_URL,
         //     useValue: '',

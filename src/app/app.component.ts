@@ -15,4 +15,10 @@ export class AppComponent {
     //         applicationRef.tick();
     //     });
     // }
+    // constructor() {
+    //     const injector = Injector.create({
+    //         providers: [],
+    //         parent: undefined,
+    //     })
+    // }
 }

@@ -1,15 +1,23 @@
-import {map, Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {productsMock} from './products.mock';
+import {HttpClient} from '@angular/common/http';
 import {Product} from './product.interface';
-// import {BASE_URL} from '../base-url/base-url.token';
+
+interface ProductsDto {
+    data: {
+        items: Product[];
+    };
+}
 
 @Injectable()
 export class ProductsApiService {
     // BASE_URL -> https://course-angular.javascript.ru/api
-    // constructor(@Inject(BASE_URL) private readonly baseUrl: string) {}
+    constructor(private readonly httpClient: HttpClient) {}
 
     getProducts$(): Observable<Product[]> {
-        return of({data: {items: productsMock}}).pipe(map(({data}) => data.items));
+        return this.httpClient
+            .get<ProductsDto>(`/products/suggestion`)
+            .pipe(map(({data}) => data.items));
+        // return of({data: {items: productsMock}}).pipe(map(({data}) => data.items));
     }
 }
