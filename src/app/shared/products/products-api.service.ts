@@ -6,6 +6,7 @@ import {Product} from './product.interface';
 
 @Injectable()
 export class ProductsApiService {
+    // BASE_URL -> https://course-angular.javascript.ru/api
     // constructor(@Inject(BASE_URL) private readonly baseUrl: string) {}
 
     getProducts$(): Observable<Product[]> {

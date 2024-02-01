@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../../shared/products/product.interface';
-import {currency} from '../../../shared/currency/currency';
 
 @Component({
     selector: 'app-card',
@@ -23,10 +22,4 @@ export class CardComponent {
     isStarActive(starIndex: number): boolean {
         return !!(this.product && this.product.rating >= starIndex);
     }
-
-    // currency(price: number | undefined): string {
-    //     return `${price} $`;
-    // }
-
-    readonly currency = currency;
 }

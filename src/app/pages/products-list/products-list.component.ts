@@ -9,39 +9,9 @@ import {ProductsStoreService} from '../../shared/products/products-store.service
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
-    // readonly products$ = of(productsMock);
-    // readonly productsStoreService = new ProductsStoreService();
     readonly products$ = this.productsStoreService.products$;
 
-    // for easy
-    name = 'Мышь';
-
-    // for hard
-    readonly propertyName = 'feedbacksCount' as const; // keyof IProduct
-    searchPropertyValue = 2;
-
-    constructor(
-        // @Inject(ProductsStoreService) private readonly productsStoreService: ProductsStoreService,
-        // ~
-        private readonly productsStoreService: ProductsStoreService, // @Inject('ProductsStoreServiceString') // private readonly productsStoreServiceString: ProductsStoreService, // @Inject('baseUrl') // private readonly baseUrl: string, // @Inject('productsStream$') // readonly products$: Observable<Product[] | null>,
-    ) {
-        // console.log(productsStoreServiceString === productsStoreService);
-        // console.log(baseUrl);
-    }
-
-    // constructor(@Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef) {
-    // constructor(private readonly changeDetectorRef: ChangeDetectorRef) {
-    // setTimeout(() => {
-    //     this.products = productsMock;
-
-    //     this.changeDetectorRef.markForCheck();
-    // }, 3000);
-    // setTimeout(() => {
-    //     this.products = productsMock.map(item => ({...item, price: 1000}));
-
-    //     this.changeDetectorRef.markForCheck();
-    // }, 5000);
-    // }
+    constructor(private readonly productsStoreService: ProductsStoreService) {}
 
     ngOnInit(): void {
         this.productsStoreService.loadProducts();
