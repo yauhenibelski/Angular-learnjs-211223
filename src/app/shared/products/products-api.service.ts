@@ -10,7 +10,9 @@ interface ProductsDto {
     };
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ProductsApiService {
     constructor(private readonly httpClient: HttpClient) {}
 

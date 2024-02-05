@@ -9,16 +9,4 @@ import {applicationConfigMock} from './shared/application-config/application-con
 })
 export class AppComponent {
     readonly applicationConfig = applicationConfigMock;
-
-    // constructor(private readonly applicationRef: ApplicationRef, private readonly ngZone: NgZone) {
-    //     ngZone.onMicrotaskEmpty.subscribe(() => {
-    //         applicationRef.tick();
-    //     });
-    // }
-    // constructor() {
-    //     const injector = Injector.create({
-    //         providers: [],
-    //         parent: undefined,
-    //     })
-    // }
 }
