@@ -1,4 +1,4 @@
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Subscription, filter} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Product} from './product.interface';
 import {ProductsApiService} from './products-api.service';
@@ -8,22 +8,44 @@ import {ProductsApiService} from './products-api.service';
 })
 export class ProductsStoreService {
     private readonly productsStore$ = new BehaviorSubject<Product[] | null>(null);
+    private readonly currentProductStore$ = new BehaviorSubject<Product | null>(null);
 
-    constructor(private readonly productsApiService: ProductsApiService) {
-        // eslint-disable-next-line no-console
-        console.log('Create ProductsStoreService');
-    }
+    private activeLoadProductsSubscription: Subscription | null = null;
+    private activeLoadProductSubscription: Subscription | null = null;
 
-    get products$(): Observable<Product[] | null> {
-        return this.productsStore$.asObservable();
-    }
+    readonly products$ = this.productsStore$.asObservable();
+    readonly currentProduct$ = this.currentProductStore$.asObservable();
+
+    constructor(private readonly productsApiService: ProductsApiService) {}
 
     loadProducts() {
-        this.productsApiService.getProducts$().subscribe(products => {
-            this.productsStore$.next(products);
-        });
-        // setTimeout(() => {
-        //     this.productsStore$.next(productsMock);
-        // }, 2000);
+        if (this.activeLoadProductsSubscription) {
+            this.activeLoadProductsSubscription.unsubscribe();
+        }
+
+        this.activeLoadProductsSubscription = this.productsApiService
+            .getProducts$()
+            .subscribe(products => {
+                this.productsStore$.next(products);
+
+                this.activeLoadProductsSubscription = null;
+            });
+    }
+
+    loadProduct(productId: string) {
+        if (this.activeLoadProductSubscription) {
+            this.activeLoadProductSubscription.unsubscribe();
+        }
+
+        const productPreview = this.productsStore$.value?.find(({_id}) => _id === productId);
+
+        this.currentProductStore$.next(productPreview || null);
+
+        this.activeLoadProductSubscription = this.productsApiService
+            .getProduct$(productId)
+            .pipe(filter(Boolean))
+            .subscribe(product => {
+                this.currentProductStore$.next(product);
+            });
     }
 }
