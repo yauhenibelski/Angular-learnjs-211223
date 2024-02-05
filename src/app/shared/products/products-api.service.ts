@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Product} from './product.interface';
 import {ProductDto} from './product.dto';
+import {getParamsFromObject} from '../params/get-params-from-object';
 
 interface ProductsDto {
     data: {
@@ -16,8 +17,10 @@ interface ProductsDto {
 export class ProductsApiService {
     constructor(private readonly httpClient: HttpClient) {}
 
-    getProducts$(): Observable<Product[]> {
-        return this.httpClient.get<ProductsDto>(`/products`).pipe(map(({data}) => data.items));
+    getProducts$(subCategoryId?: Product['_id'] | null): Observable<Product[]> {
+        return this.httpClient
+            .get<ProductsDto>(`/products`, {params: getParamsFromObject({subCat: subCategoryId})})
+            .pipe(map(({data}) => data.items));
     }
 
     getProduct$(id: string): Observable<Product | undefined> {
