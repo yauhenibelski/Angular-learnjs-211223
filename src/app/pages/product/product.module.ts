@@ -4,14 +4,17 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
+import {RouterModule} from '@angular/router';
 import {CarouselModule} from '../../shared/carousel/carousel.module';
 import {ProductComponent} from './product.component';
 import {TypeModule} from './type/type.module';
 import {DescriptionModule} from './description/description.module';
+import {ProductRoutingModule} from './product-routing.module';
 
 @NgModule({
     declarations: [ProductComponent],
     imports: [
+        ProductRoutingModule,
         CommonModule,
         CarouselModule,
         MatButtonModule,
@@ -20,6 +23,7 @@ import {DescriptionModule} from './description/description.module';
         MatTabsModule,
         TypeModule,
         DescriptionModule,
+        RouterModule,
     ],
     exports: [ProductComponent],
 })

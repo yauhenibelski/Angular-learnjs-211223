@@ -11,6 +11,20 @@
         "
     >
         <div class="cards">
+            <!-- <app-card
+                *ngFor="
+                    let product of productsGroup;
+                    trackBy: trackById;
+                    let index = index;
+                    let first = first;
+                    let last = last;
+                    let even = even;
+                    let odd = odd
+                "
+                class="card"
+                [product]="product"
+                (click)="navigateToProduct()"
+            > -->
             <app-card
                 *ngFor="
                     let product of productsGroup;
@@ -23,6 +37,7 @@
                 "
                 class="card"
                 [product]="product"
+                [routerLink]="['/product', product._id]"
             >
                 Text
             </app-card>
