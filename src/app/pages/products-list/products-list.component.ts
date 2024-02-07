@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {map, switchMap, tap} from 'rxjs';
 import {Product} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
@@ -21,17 +21,10 @@ export class ProductsListComponent {
 
     constructor(
         private readonly productsStoreService: ProductsStoreService,
-        private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute,
     ) {}
 
     trackById(_: number, item: Product): Product['_id'] {
         return item._id;
-    }
-
-    navigateToProduct() {
-        // this.router.navigateByUrl('/product/id');
-        // this.router.navigate(['/product/id']);
-        this.router.navigate(['/', 'product', 'id']);
     }
 }

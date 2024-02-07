@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {filter, map, switchMap, tap} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
 
 @Component({
@@ -10,7 +10,6 @@ import {ProductsStoreService} from '../../shared/products/products-store.service
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductComponent {
-    // readonly product$ = of('portativnaa-kolonka-huawei-cm510-cernyj').pipe(
     readonly product$ = this.activatedRoute.paramMap.pipe(
         map(paramMap => paramMap.get('id')),
         filter(Boolean),
@@ -22,32 +21,6 @@ export class ProductComponent {
 
     constructor(
         private readonly productsStoreService: ProductsStoreService,
-        private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute,
-    ) {
-        // this.activatedRoute.params.subscribe(console.log);
-        // eslint-disable-next-line no-console
-        console.log(this.activatedRoute.snapshot.data);
-        // setTimeout(() => {
-        //     this.router.navigate(['/product/portativnaa-kolonka-huawei-cm510-cernyj']);
-        // }, 5000);
-        // this.router.navigate(['./'], {
-        //     relativeTo: this.activatedRoute,
-        //     queryParams: {
-        //         searchName: 'Egor',
-        //     },
-        // });
-        // this.router.events.subscribe(console.log);
-    }
-
-    navigateToTab(tab: string) {
-        this.router.navigate(['./', tab], {relativeTo: this.activatedRoute});
-
-        const urlTree = this.router.createUrlTree(['./', tab], {relativeTo: this.activatedRoute});
-
-        // eslint-disable-next-line no-console
-        console.log(urlTree.toString());
-
-        this.router.navigateByUrl(urlTree);
-    }
+    ) {}
 }
