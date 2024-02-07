@@ -8,6 +8,7 @@ const productRoutes: Routes = [
     {
         path: '',
         component: ProductComponent,
+        // canActivateChild: [canActivateChildGuard],
         children: [
             {
                 path: '',
