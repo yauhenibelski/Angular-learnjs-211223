@@ -1,6 +1,9 @@
 <mat-drawer-container autosize class="container">
-    <mat-drawer #drawer mode="side" class="sidenav">
-        <ng-content select="list"></ng-content>
+    <mat-drawer mode="side" class="sidenav">
+        <app-categories-select
+            class="sidenav"
+            [categories]="categories$ | async"
+        ></app-categories-select>
     </mat-drawer>
 
     <div class="sidenav-content">
