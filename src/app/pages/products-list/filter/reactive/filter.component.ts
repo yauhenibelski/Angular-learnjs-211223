@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {IProductsFilter} from '../products-filter.interface';
 
 @Component({
@@ -11,4 +12,6 @@ export class FilterComponent {
     @Input() brands: string[] | null = null;
 
     @Output() changeFilter = new EventEmitter<IProductsFilter>();
+
+    readonly nameControl = new FormControl();
 }

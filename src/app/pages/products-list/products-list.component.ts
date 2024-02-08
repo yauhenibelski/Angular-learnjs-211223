@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {map, switchMap, tap} from 'rxjs';
-import {FormControl} from '@angular/forms';
 import {Product} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
+import {BrandsService} from '../../shared/brands/brands.service';
 
 @Component({
     selector: 'app-products-list',
@@ -20,13 +20,18 @@ export class ProductsListComponent {
         switchMap(() => this.productsStoreService.products$),
     );
 
-    readonly counterControl = new FormControl(0);
-
-    // counter = 0;
+    readonly brands$ = this.activatedRoute.paramMap.pipe(
+        map(paramMap => paramMap.get('subCategoryId')),
+        tap(subCategoryId => {
+            this.brandsService.loadBrands(subCategoryId);
+        }),
+        switchMap(() => this.brandsService.brands$),
+    );
 
     constructor(
         private readonly productsStoreService: ProductsStoreService,
         private readonly activatedRoute: ActivatedRoute,
+        private readonly brandsService: BrandsService,
     ) {}
 
     trackById(_: number, item: Product): Product['_id'] {

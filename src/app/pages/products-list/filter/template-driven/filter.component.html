@@ -1,7 +1,7 @@
 <form class="filter">
     <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput />
+        <input ngModel matInput />
     </mat-form-field>
 
     <div *ngIf="brands; else loaderTemplateRef" class="checkbox-container">
