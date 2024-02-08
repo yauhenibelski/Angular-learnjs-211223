@@ -13,9 +13,6 @@ const routes: Routes = [
         path: 'products-list',
         loadChildren: () =>
             import('./pages/products-list/products-list.module').then(m => m.ProductsListModule),
-        // resolve: {
-        //     products: loadProductsResolver,
-        // },
     },
     {
         path: 'product/:id',
@@ -23,13 +20,6 @@ const routes: Routes = [
         data: {
             needPreload: true,
         },
-        // canActivate: [canActivateGuard],
-        // canDeactivate: [canDeactivateGuard],
-        // canLoad: [() => question('можно ли загрузить чанк')],
-        // canMatch: [canMatchGuard],
-        // canDeactivate: [CanDiactivateService], // old
-        // canDeactivate: [(...args) => CanDiactivateService.canDiactivate(...args)], // migration
-        // canDeactivate: [(...args) => logic] // new
     },
     {
         path: 'product/:id',

@@ -1,12 +1,6 @@
-<!-- <app-counter-input [formControl]="counterControl"></app-counter-input>
-{{counterControl.value}}
-{{counterControl.touched}} -->
+<app-counter-input [formControl]="counterControl"></app-counter-input>
 
-<!-- <app-counter-input #model="ngModel" [ngModel]="counter" (ngModelChange)="counter = $event"></app-counter-input> -->
-<app-counter-input [disabled]="true" [(ngModel)]="counter"></app-counter-input>
-
-<!-- {{model.value}} -->
-{{ counter }}
+<!-- <app-counter-input #model="ngModel" [(ngModel)]="counter"></app-counter-input> -->
 
 <div *ngIf="products$ | async as products; else loaderTemplate" class="scroll-container">
     <ng-container
