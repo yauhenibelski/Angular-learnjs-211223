@@ -23,7 +23,7 @@ export class IsStringAsyncDirective implements AsyncValidator {
 
     validate(control: AbstractControl): Observable<ValidationErrors | null> {
         // eslint-disable-next-line no-console
-        console.log('Calc async string validator');
+        // console.log('Calc async string validator');
 
         return timer(3000).pipe(
             map(() => (Number(control.value) ? {isString: 'Has number value'} : null)),

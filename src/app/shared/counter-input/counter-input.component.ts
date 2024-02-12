@@ -37,21 +37,21 @@ export class CounterInputComponent implements ControlValueAccessor {
         this.changeDetectorRef.markForCheck();
 
         // eslint-disable-next-line no-console
-        console.log('writeValue', this.counter);
+        // console.log('writeValue', this.counter);
     }
 
     registerOnChange(onChnage: (newCounter: number) => void): void {
         this.onChnage = onChnage;
 
         // eslint-disable-next-line no-console
-        console.log('registerOnChange', this.onChnage);
+        // console.log('registerOnChange', this.onChnage);
     }
 
     registerOnTouched(onTouch: () => void): void {
         this.onTouch = onTouch;
 
         // eslint-disable-next-line no-console
-        console.log('registerOnTouched', this.onTouch);
+        // console.log('registerOnTouched', this.onTouch);
     }
 
     setDisabledState(isDisabled: boolean): void {
@@ -60,7 +60,7 @@ export class CounterInputComponent implements ControlValueAccessor {
         this.changeDetectorRef.markForCheck();
 
         // eslint-disable-next-line no-console
-        console.log('setDisabledState', this.isDisabled);
+        // console.log('setDisabledState', this.isDisabled);
     }
 
     back() {
@@ -70,7 +70,7 @@ export class CounterInputComponent implements ControlValueAccessor {
         this.onTouch();
 
         // eslint-disable-next-line no-console
-        console.log('back', this.counter);
+        // console.log('back', this.counter);
     }
 
     next() {
@@ -80,6 +80,6 @@ export class CounterInputComponent implements ControlValueAccessor {
         this.onTouch();
 
         // eslint-disable-next-line no-console
-        console.log('next', this.counter);
+        // console.log('next', this.counter);
     }
 }

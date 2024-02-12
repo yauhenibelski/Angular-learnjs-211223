@@ -1,7 +1,7 @@
 <form #ngForm="ngForm" class="filter" (ngSubmit)="onLog(ngForm.value)">
     <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput ngModel name="name" />
+        <input #ngModel="ngModel" matInput ngModel name="name" />
     </mat-form-field>
 
     <div *ngIf="brands; else loaderTemplateRef" ngModelGroup="brands" class="checkbox-container">

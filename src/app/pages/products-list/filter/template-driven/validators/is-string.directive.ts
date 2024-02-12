@@ -15,7 +15,7 @@ import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angu
 export class IsStringDirective implements Validator {
     validate(control: AbstractControl): ValidationErrors | null {
         // eslint-disable-next-line no-console
-        console.log('Calc string validator');
+        // console.log('Calc string validator');
 
         return Number(control.value) ? {isString: 'Has number value'} : null;
     }

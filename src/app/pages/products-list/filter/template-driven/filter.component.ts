@@ -12,8 +12,8 @@ export class FilterComponent {
 
     @Output() changeFilter = new EventEmitter<ProductsFilter>();
 
-    onLog(formValue: unknown) {
+    onLog(_formValue: unknown) {
         // eslint-disable-next-line no-console
-        console.log(formValue);
+        // console.log(formValue);
     }
 }

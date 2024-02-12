@@ -9,4 +9,11 @@ import {applicationConfigMock} from './shared/application-config/application-con
 })
 export class AppComponent {
     readonly applicationConfig = applicationConfigMock;
+
+    // constructor(private readonly store$: Store<State>) {
+    // console.log(store$);
+    // store$.subscribe(state => {
+    //     console.log(state);
+    // });
+    // }
 }
