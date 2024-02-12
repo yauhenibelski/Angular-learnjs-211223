@@ -9,18 +9,10 @@ import {
     Output,
     SimpleChanges,
 } from '@angular/core';
-// import {AbstractControl, AsyncValidatorFn, FormControl, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-// import {Observable, map, startWith, tap, timer} from 'rxjs';
 import {FormBuilder, FormControl} from '@angular/forms';
 import {Observable, Subject, debounceTime, map, takeUntil} from 'rxjs';
 import {ProductsFilter} from '../products-filter.interface';
 import {ProductsFilterForm} from '../products-filter-form.interface';
-
-// const isStringValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-//     console.log('Calc string validator');
-
-//     return Number(control.value) ? {isString: 'Has number value'} : null;
-// };
 
 @Component({
     selector: 'app-filter',
@@ -42,39 +34,7 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
     // @Output() readonly changeFilter: Observable<ProductsFilter>;
     // ------------------------
 
-    // readonly nameControl = new FormControl('', {
-    //     validators: [Validators.required, Validators.minLength(3)],
-    //     asyncValidators: [this.isStringAsyncValidator.bind(this)],
-    // });
-
-    // readonly errors$ = this.nameControl.statusChanges.pipe(
-    //     tap(console.log),
-    //     // map(status => (status === 'INVALID' ? this.nameControl.errors : null)),
-    //     map(() => this.nameControl.errors),
-    //     startWith(this.nameControl.errors),
-    // );
-
-    // private isStringAsyncValidator(control: AbstractControl): Observable<ValidationErrors | null> {
-    //     console.log('Calc async string validator');
-
-    //     return timer(3000).pipe(
-    //         map(() => (Number(control.value) ? {isString: 'Has number value'} : null)),
-    //         // tap(() => {this.cdr.markForCheck()})
-    //     );
-    // }
-
-    // readonly filterForm = new FormGroup({
-    //     name: new FormControl(''),
-    //     brands: new FormArray([]),
-    //     priceRange: new FormGroup({
-    //         min: new FormControl(0),
-    //         max: new FormControl(999999),
-    //     }),
-    // });
-
     readonly filterForm = this.formBuilder.group({
-        // name: this.formBuilder.control('', {validators: [Validators.required]}),
-        // name: ['', {validators: [Validators.required]}],
         name: '',
         brands: this.formBuilder.array<FormControl<boolean | null>>([]),
         priceRange: this.formBuilder.group({
@@ -86,11 +46,6 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
     constructor(private readonly formBuilder: FormBuilder) {
-        // this.filterForm.get(['priceRange', 'min']);
-        // this.filterForm.get(['name']);
-        // eslint-disable-next-line no-console
-        // this.filterForm.valueChanges.subscribe(console.log);
-        //
         // Output by stream
         // ------------------------
         // Необходимо делать это в конструкторе, т.к. при создании потока нужна уже созданная форма (filterForm)
@@ -121,10 +76,6 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
     // ------------------------
 
     private updateBrandsControl() {
-        // const brandsControls: Array<FormControl<boolean>> = this.brands
-        //     ? this.brands.map(() => this.formBuilder.control(false))
-        //     : [];
-
         const savedBrands = this.initialFilter?.brands || [];
 
         const brandsControls: boolean[] = this.brands

@@ -10,15 +10,6 @@ import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angu
             // eslint-disable-next-line no-use-before-define
             useExisting: IsStringDirective,
         },
-        // {
-        //     provide: NG_VALIDATORS,
-        //     multi: true,
-        //     useValue: <Validator>{
-        //         validate(_control: AbstractControl): ValidationErrors | null {
-        //             return {testError: 'Is test error'};
-        //         },
-        //     },
-        // },
     ],
 })
 export class IsStringDirective implements Validator {

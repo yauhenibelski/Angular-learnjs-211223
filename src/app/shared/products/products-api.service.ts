@@ -4,12 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from './product.interface';
 import {ProductDto} from './product.dto';
 import {getParamsFromObject} from '../params/get-params-from-object';
-
-interface ProductsDto {
-    data: {
-        items: Product[];
-    };
-}
+import {ProductsDto} from './products.dto';
 
 @Injectable({
     providedIn: 'root',
