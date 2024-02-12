@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {IProductsFilter} from '../products-filter.interface';
+import {ProductsFilter} from '../products-filter.interface';
 
 @Component({
     selector: 'app-filter',
@@ -10,7 +10,7 @@ import {IProductsFilter} from '../products-filter.interface';
 export class FilterComponent {
     @Input() brands: string[] | null = null;
 
-    @Output() changeFilter = new EventEmitter<IProductsFilter>();
+    @Output() changeFilter = new EventEmitter<ProductsFilter>();
 
     onLog(formValue: unknown) {
         // eslint-disable-next-line no-console

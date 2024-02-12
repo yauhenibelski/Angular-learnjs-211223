@@ -9,7 +9,7 @@ import {CardModule} from './card/card.module';
 import {PaginationModule} from '../../shared/pagination/pagination.module';
 import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-property.module';
 import {ProductsListRoutingModule} from './products-list-routing.module';
-import {FilterModule} from './filter/template-driven/filter.module';
+import {FilterModule} from './filter/reactive/filter.module';
 
 @NgModule({
     declarations: [ProductsListComponent],
